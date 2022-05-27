@@ -3,12 +3,13 @@ __author__ = "R.K."
 import win32com.client
 import os
 
-inputFolder = r'C:\Users\RK\Downloads\costing_remits'
-outputFolder = r'C:\Users\RK\Downloads\costing_remits\pdf'
+inputFolder = r'C:\Users\Roland K\Downloads\costing_remits'
+outputFolder = r'C:\Users\Roland K\Downloads\costing_remits\pdf'
+
+outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
 
 for file in os.listdir(inputFolder):
     if file.endswith(".msg"):
-        outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
         filePath = inputFolder + '\\' + file
         msg = outlook.OpenSharedItem(filePath)
         att = msg.Attachments
